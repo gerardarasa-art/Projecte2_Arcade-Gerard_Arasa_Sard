@@ -34,7 +34,7 @@ def janken():
             print("Tirada incorrecta! Torna-ho a provar.")
             continue
     
-        tir_maquina = robot.jugada() # La màquina fa la seva tirada
+        tir_maquina = random.choice(["pedra", "paper", "tisora"]) # La màquina fa la seva tirada
         print("El robot ha triat:", tir_maquina)
         
         # Resultats de la ronda
@@ -71,27 +71,31 @@ def janken():
     print("-------------------------\n")
     print("Tornant al menú principal...")
     
-    
+
+
 def nana():
-    print("\n--- Endevinar el Número ---")
-    
-    numero_secret = random.randint(1, 100) # La màquina tria un número aleatori entre l'1 i el 100
+    print("--- Endevinar el Número ---")
+    numero_secret = random.choice(range(1, 101)) 
     intents = 0
     
-    numero_usuari = input("Escull un número entre l'1 i el 100: ")
-    
-    if numero_usuari < numero_secret:
-        print("El número és més baix!")
-        intents += 1
-        return
-    elif numero_usuari > numero_secret:
-        print("El número és més alt!")
-        intents += 1
-        return
-    elif numero_usuari == numero_secret:
-        print("Felicitats! Has endevinat el número! Te ha costat", intents, "intents endevinar-lo.")
-    else:
-        print("Entrada incorrecta! Torna-ho a provar.")
-        return
-    
-        
+    while True: # Aquest es el bucle principal del joc, quan arrbe al break, el joc s'acaba 
+  
+        try:
+            # Posem dintre del bucle el input per a que l'usuari pugui anar provant fins a endevinar el número
+            numero_usuari = int(input("Escull un número entre l'1 i el 100: ")) # Hem posat el int() per a convertir l'entrada de l'usuari en un número enter
+            
+        except ValueError:
+            print("Entrada incorrecta. Si us plau, introdueix només un número enter.")
+            continue # Torna al principi del bucle sense augmentar els intent, en el cas de que l'usuari introdueixi una entrada no vàlida
+
+        intents += 1 # Hem creat aquesta variable per a comptar els intents que fa l'usuari
+
+        if numero_usuari < numero_secret:
+            print("El número és més alt!")
+            continue  # Torna al principi del bucle per a que l'usuari pugui provar de nou
+        elif numero_usuari > numero_secret:
+            print("El número és més baix!")
+            continue  # Torna al principi del bucle per a que l'usuari pugui provar de nou
+        elif numero_usuari == numero_secret:
+            print(f"Felicitats! Has endevinat el número! T'ha costat, {intents}, intents endevinar-lo.")
+            break  # En el final usarem 'break' per sortir del bucle i acabar el joc
