@@ -1,5 +1,4 @@
 import robot # El robot serveix per a la funció dins dels jocs
-import random  # Importem el mòdul jocs que conté els jocs
 
 def mostrar_menu():
     print("\n--- BENVINGUT/DA AL MINI ARCADE ---")
@@ -14,7 +13,7 @@ def janken():
     
     # Tipus de dificultats
     print("1. El primer que arribi a 3 victòries")
-    print("2. El primer que arribi a 5 victòries")
+    print("2. El millor a 5 rondes")
     mode = input("Escull una dificultat (1 o 2): ") 
     
     if mode == '1':
@@ -22,8 +21,8 @@ def janken():
         limit_rondes = None # No hi ha límit de rondes ja que es al primer que arribi a 3/5 victòries
     
     elif mode == '2':
-        limit_victories = 5 
-        limit_rondes = None # No hi ha límit de rondes ja que es al primer que arribi a 3/5 victòries
+        limit_victories = None
+        limit_rondes = 5 # No hi ha límit de rondes ja que es al primer que arribi a 3/5 victòries
     else:
         print("Opció incorrecta! Tornant al menú principal.")
         return
@@ -39,9 +38,9 @@ def janken():
 
         if tir_usuari not in ("pedra", "paper", "tisora"): # El not in serveix per a comprovar si la tirada de l'usuari és vàlida
             print("Tirada incorrecta! Torna-ho a provar.")
-            continue
+            continue # El continue serveix per a tornar al principi del bucle si l'entrada és incorrecta
     
-        tir_maquina = random.choice(["pedra", "paper", "tisora"]) # La màquina fa la seva tirada
+        tir_maquina = robot.random.choice(["pedra", "paper", "tisora"]) # La màquina fa la seva tirada
         print("El robot ha triat:", tir_maquina)
         
         # Resultats de la ronda
@@ -64,6 +63,9 @@ def janken():
             if usuari == limit_victories or maquina == limit_victories:
                 break # Break serverix per a sortir del bucle quan un dels dos arribi al límit de victòries
             
+        if mode == '2' and limit_rondes == 5:
+            if ronda >= limit_rondes:
+                break # Break serverix per a sortir del bucle quan s'arribi al límit de rondes
     
     # GUANYADOR FINAL
     print("\n--- RESULTAT FINAL ---")
@@ -82,7 +84,7 @@ def janken():
 
 def nana():
     print("--- Endevinar el Número ---")
-    numero_secret = random.choice(range(1, 101)) 
+    numero_secret = robot.random.choice(range(1, 101)) 
     intents = 0
     
     while True: # Aquest es el bucle principal del joc, quan arrbe al break, el joc s'acaba 
