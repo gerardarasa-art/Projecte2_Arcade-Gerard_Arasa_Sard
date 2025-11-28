@@ -4,7 +4,8 @@ def mostrar_menu():
     print("\n--- BENVINGUT/DA AL MINI ARCADE ---")
     print("1. Jugar a Pedra, Paper, Tisora")
     print("2. Jugar a Endevinar el Número")
-    print("3. Sortir\n")
+    print("3. Jugar a Llançament de Moneda")
+    print("4. Sortir\n")
 
 def main():
     while True:  # Bucle principal
@@ -16,6 +17,8 @@ def main():
         elif opcio == '2':
             jocs.nana()
         elif opcio == '3':
+            jocs.moneda()
+        elif opcio == '4':
             print("Gràcies per jugar! Fins aviat!")
             break # Surt del bucle i acaba el programa
         else:

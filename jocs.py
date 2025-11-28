@@ -101,3 +101,19 @@ def nana():
         elif numero_usuari == numero_secret:
             print(f"Felicitats! Has endevinat el número! T'ha costat, {intents}, intents endevinar-lo.")
             break  # En el final usarem 'break' per sortir del bucle i acabar el joc
+        
+def moneda():
+    print("--- Llançament de Moneda ---")
+    
+    usuari = input("Escull cara o creu (prem Enter per llançar la moneda): ")
+    resultat = robot.random.choice(["cara", "creu"])
+    print(f"La moneda ha caigut en: {resultat}")
+    
+    if usuari == resultat:
+        print("Felicitats ! Has encertat!")
+    else:
+        print("No has encertat! Tindras més sort la pròxima vegada.")
+    print("Gràcies per jugar al Llançament de Moneda!\n")
+    print("----------------------------\n")
+    print("Tornant al menú principal...") 
+
