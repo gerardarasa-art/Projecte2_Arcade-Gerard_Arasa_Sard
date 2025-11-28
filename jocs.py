@@ -107,12 +107,12 @@ def moneda():
     
     usuari = input("Escull cara o creu (prem Enter per llançar la moneda): ")
     resultat = robot.random.choice(["cara", "creu"])
-    print(f"La moneda ha caigut en: {resultat}")
+    print(f"La moneda ha caigut en: {resultat}\n ")
     
     if usuari == resultat:
-        print("Felicitats ! Has encertat!")
+        print("Felicitats ! Has encertat!\n")
     else:
-        print("No has encertat! Tindras més sort la pròxima vegada.")
+        print("No has encertat! Tindras més sort la pròxima vegada.\n")
     print("Gràcies per jugar al Llançament de Moneda!\n")
     print("----------------------------\n")
     print("Tornant al menú principal...") 
