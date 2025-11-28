@@ -52,7 +52,7 @@ def janken():
         ronda += 1
         print(f"Puntuació - Tu: {usuari}, Robot: {maquina}") # La f serveix per a formatar cadenes i inserir variables dins d'elles
     
-        if limit_victories is not None: 
+        if mode == '1' and limit_victories is not None: # is not None serveix per a comprovar que la variable no és None
             if usuari == limit_victories or maquina == limit_victories:
                 break # Break serverix per a sortir del bucle quan un dels dos arribi al límit de victòries
             
